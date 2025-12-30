@@ -1,13 +1,16 @@
 const car = ["Toyota", "Honda", "BMW", "Suzuki", "Wuling", "Mitsubishi"];
 
 //manual
+let result1 = [];
 for (let i = 0; i < car.length; i++) {
-  console.log(`Daftar merk mobil ke-${i + 1}: ${car[i]}`);
+  result1 = [...result1, `Daftar merk mobil ke-${i + 1}: ${car[i]}`];
 }
 
-//pakai method map
-const result = car.map((item, index) => {
+console.log(result1);
+
+// pakai method map
+const result2 = car.map((item, index) => {
   return `Daftar merk mobil ke-${index + 1}: ${item}`;
 });
 
-console.log(result);
+console.log(result2);
