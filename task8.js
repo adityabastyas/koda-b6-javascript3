@@ -14,7 +14,22 @@ const datas = async () => {
 
     console.log(target);
   } catch (error) {
-    console.log(error);
+    console.log("error", error);
   }
 };
 datas();
+
+///
+
+fetch(url)
+  .then((res) => res.json())
+  .then((data) => {
+    let target = data.map((item) => {
+      return item.email.toLowerCase();
+    });
+
+    console.log(target);
+  })
+  .catch((error) => {
+    console.log("error", error);
+  });
