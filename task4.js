@@ -58,11 +58,12 @@ const antri = () => {
     setTimeout(() => {
       console.log("menunggu antrian");
     }, waktu * 1000);
+
+    waktu = waktu + orang.wait;
+
     setTimeout(() => {
       console.log(`halo ${data[i].name}, pesananmu sudah selesai`);
     }, waktu * 1000);
-
-    waktu = waktu + orang.wait;
   }
 };
 
