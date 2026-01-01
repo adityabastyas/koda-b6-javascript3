@@ -24,7 +24,8 @@ console.log("tampilkan nama");
 const queue1 = (name, time) => {
   return new Promise((resolve, reject) => {
     if (name === "") {
-      reject("Nama Tidaak boleh kosong");
+      reject("Nama tidak boleh kosong");
+      return;
     }
 
     setTimeout(() => {
@@ -37,14 +38,35 @@ const queue1 = (name, time) => {
 queue1("John", 1_500)
   .then(() => queue1("Ed", 2_000))
   .then(() => queue1("Jane", 500))
-  .then(() => queue1("", 400))
   .catch((error) => {
     console.log(error);
   });
 
-// const queue2 = async () => {
-//   try {
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
+///////
+// console.log("tampilkan nama");
+
+const queue2 = (name, time) => {
+  return new Promise((resolve, reject) => {
+    if (name === "") {
+      reject("Nama tidak boleh kosong");
+      return;
+    }
+
+    setTimeout(() => {
+      console.log(name);
+      resolve();
+    }, time);
+  });
+};
+
+const jalankanQueue = async () => {
+  try {
+    await queue2("John", 1500);
+    await queue2("Ed", 2000);
+    await queue2("Jane", 500);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+jalankanQueue();
