@@ -3,38 +3,38 @@ const data = [
     name: "Adit",
     wait: 3,
   },
-  // {
-  //   name: "Anton",
-  //   wait: 5,
-  // },
-  // {
-  //   name: "Aska",
-  //   wait: 2,
-  // },
-  // {
-  //   name: "Jaka",
-  //   wait: 5,
-  // },
-  // {
-  //   name: "reza",
-  //   wait: 6,
-  // },
-  // {
-  //   name: "arif",
-  //   wait: 7,
-  // },
-  // {
-  //   name: "vincent",
-  //   wait: 4,
-  // },
-  // {
-  //   name: "hilal",
-  //   wait: 8,
-  // },
-  // {
-  //   name: "wildan",
-  //   wait: 9,
-  // },
+  {
+    name: "Anton",
+    wait: 5,
+  },
+  {
+    name: "Aska",
+    wait: 2,
+  },
+  {
+    name: "Jaka",
+    wait: 5,
+  },
+  {
+    name: "reza",
+    wait: 6,
+  },
+  {
+    name: "arif",
+    wait: 7,
+  },
+  {
+    name: "vincent",
+    wait: 4,
+  },
+  {
+    name: "hilal",
+    wait: 8,
+  },
+  {
+    name: "wildan",
+    wait: 9,
+  },
   {
     name: "",
     wait: 2,
@@ -46,7 +46,7 @@ function queue(data) {
   function start() {
     return new Promise((resolve, reject) => {
       const person = data[index];
-      if (person) {
+      if (person.name !== "") {
         console.log("Menunggu antrian...");
 
         setTimeout(() => {
@@ -62,14 +62,8 @@ function queue(data) {
   return start();
 }
 
-const namaKosong = data.some((item) => item.name === "");
-
-if (namaKosong) {
-  queue(data)
-    .then()
-    .catch(() => {
-      console.log("Selesai");
-    });
-} else {
-  console.log("Error: Ada pesanan tanpa nama");
-}
+queue(data)
+  .then()
+  .catch(() => {
+    console.log("Nama tidak boleh kosong");
+  });
