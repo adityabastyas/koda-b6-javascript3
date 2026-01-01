@@ -1,4 +1,4 @@
-//output sebuah array dengan osoan sting email
+//output sebuah array dengan isian string email
 
 const url = "https://jsonplaceholder.typicode.com/users";
 
@@ -31,7 +31,6 @@ const chars = {
   Z: "z",
 };
 
-//asyn await tanpa metod toLowerCase()
 const ubahHurufKeKecil = (huruf) => {
   if (chars[huruf]) {
     return chars[huruf];
@@ -47,7 +46,9 @@ const ubahEmailKeKecil = (email) => {
   }
   return tampung;
 };
+//
 
+//asyn await tanpa metod toLowerCase()
 const datas2 = async () => {
   try {
     const res = await fetch(url);
@@ -80,7 +81,7 @@ const datas = async () => {
       return email;
     });
 
-    // console.log(target);
+    console.log(target);
   } catch (error) {
     console.log("error", error);
   }
@@ -88,6 +89,23 @@ const datas = async () => {
 datas();
 
 //
+
+// then cath tanpa toLowerCase()
+
+fetch(url)
+  .then((res) => res.json())
+  .then((data) => {
+    let target = data.map((item) => {
+      let email = item.email;
+      let kecil = ubahEmailKeKecil(email);
+      return kecil;
+    });
+
+    console.log(target);
+  })
+  .catch((error) => {
+    console.log("error", error);
+  });
 
 // then cath toLowerCase()
 fetch(url)
@@ -97,7 +115,7 @@ fetch(url)
       return item.email.toLowerCase();
     });
 
-    // console.log(target);
+    console.log(target);
   })
   .catch((error) => {
     console.log("error", error);
